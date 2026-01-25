@@ -1,0 +1,269 @@
+/* Navbar.css - Navigation Bar Styles */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--bg-secondary);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 2px solid var(--border-color);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 18px 0;
+}
+
+.navbar.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.navbar.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.navbar.scrolled {
+  background: rgba(26, 26, 46, 0.95);
+  box-shadow: 0 10px 30px var(--shadow-color);
+  padding: 12px 0;
+}
+
+.app.light .navbar.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.navbar-logo {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.navbar-logo:hover {
+  transform: scale(1.05);
+}
+
+.navbar-logo h1 {
+  font-size: 2rem;
+  margin: 0;
+  color: var(--text-primary);
+  font-weight: 900;
+  letter-spacing: -1px;
+  position: relative;
+  display: inline-block;
+}
+
+.logo-highlight {
+  color: var(--accent-primary);
+  position: relative;
+}
+
+.logo-highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.navbar-logo:hover .logo-highlight::after {
+  transform: scaleX(1);
+}
+
+/* Navbar Controls */
+.navbar-controls {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+/* Divider */
+.divider {
+  width: 1px;
+  height: 30px;
+  background: var(--border-color);
+  margin: 0 5px;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: var(--hover-bg);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--accent-primary);
+  transform: scale(0);
+  border-radius: 50%;
+  transition: transform 0.4s ease;
+  z-index: 0;
+}
+
+.theme-toggle:hover::before {
+  transform: scale(1.5);
+}
+
+.theme-toggle svg {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.4s ease;
+}
+
+.theme-toggle:hover svg {
+  transform: rotate(180deg) scale(1.1);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Navigation Links */
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  background: var(--hover-bg);
+  color: var(--text-primary);
+}
+
+.nav-link.active {
+  background: var(--hover-bg);
+  color: var(--accent-primary);
+}
+
+.nav-link svg {
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover svg {
+  transform: translateY(-2px);
+  color: var(--accent-primary);
+}
+
+/* Mobile Menu Toggle (if needed in future) */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.mobile-menu-toggle span {
+  width: 100%;
+  height: 3px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 0 15px;
+  }
+
+  .navbar-logo h1 {
+    font-size: 1.7rem;
+  }
+
+  .navbar-controls {
+    gap: 15px;
+  }
+
+  .nav-link span {
+    display: none;
+  }
+
+  .nav-link {
+    padding: 12px;
+    width: 45px;
+    height: 45px;
+    justify-content: center;
+    background: var(--hover-bg);
+    border-radius: 12px;
+  }
+
+  .theme-toggle {
+    width: 45px;
+    height: 45px;
+  }
+
+  .nav-link svg {
+    margin: 0;
+  }
+
+  .divider {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-logo h1 {
+    font-size: 1.5rem;
+  }
+
+  .navbar-controls {
+    gap: 10px;
+  }
+
+  .nav-link,
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+}
