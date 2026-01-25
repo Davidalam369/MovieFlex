@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Navbar from '../components/NavBar';
 import MovieSection from '../components/MovieSection';
+import MovieCard from '../components/MoveCard';
 import {
   searchMovies,
   getTrendingMoviesByLanguage,
@@ -213,38 +214,7 @@ const Home = ({ theme, toggleTheme }) => {
                 <p className="results-count">{searchResults.length} movies found</p>
                 <div className="results-grid">
                   {searchResults.map(movie => (
-                    <div key={movie.id} className="search-movie-card">
-                      <div className="movie-poster-container">
-                        <img
-                          src={movie.Poster}
-                          alt={movie.Title}
-                          onError={(e) => {
-                            if (!e.target.dataset.attempted) {
-                              e.target.dataset.attempted = 'true';
-                              e.target.src = '/Images/placeholder.jpg';
-                            }
-                          }}
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </div>
-                      <div className="search-movie-info">
-                        <h3>{movie.Title}</h3>
-                        <div className="movie-meta">
-                          <span className="movie-year">{movie.Year}</span>
-                          <span className="movie-type">{movie.Type}</span>
-                          {movie.Rating && movie.Rating !== 'N/A' && (
-                            <span className="movie-rating">⭐ {movie.Rating}</span>
-                          )}
-                        </div>
-                        {movie.Genre && movie.Genre !== 'N/A' && (
-                          <p className="movie-genre">{movie.Genre}</p>
-                        )}
-                        {movie.overview && (
-                          <p className="movie-overview">{movie.overview.substring(0, 100)}...</p>
-                        )}
-                      </div>
-                    </div>
+                    <MovieCard key={movie.id} movie={movie} />
                   ))}
                 </div>
               </>
@@ -277,19 +247,7 @@ const Home = ({ theme, toggleTheme }) => {
                     </div>
 
                     <div className="filter-controls">
-                      <div className="filter-group">
-                        <label htmlFor="language-filter">Language:</label>
-                        <select
-                          id="language-filter"
-                          value={selectedLanguage}
-                          onChange={(e) => handleLanguageChange(e.target.value)}
-                          className="language-select"
-                        >
-                          {LANGUAGE_VALUES.map(lang => (
-                            <option key={lang} value={lang}>{lang}</option>
-                          ))}
-                        </select>
-                      </div>
+
 
                       {/* Year filter removed */}
                     </div>
