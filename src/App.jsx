@@ -4,7 +4,7 @@ import Home from './Pages/Home'
 import Favorite from './Pages/Favorites'
 import MovieDetails from './Pages/MovieDetails'
 import Toast from './components/Toast'
-import './css/app.css'
+import './css/app.css';
 function App() {
   const [theme, setTheme] = useState(() => {
     const savedTheme = localStorage.getItem('theme');
@@ -36,7 +36,7 @@ function App() {
             element={<Favorite theme={theme} toggleTheme={toggleTheme} />}
           />
           <Route
-          
+
             path="/movie/:id"
             element={<MovieDetails theme={theme} toggleTheme={toggleTheme} />}
           />

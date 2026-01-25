@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./moveCard.css";
+import "../css/moveCard.css";
 import { favoritesManager } from "../services/api";
 
 const MovieCard = ({ movie }) => {

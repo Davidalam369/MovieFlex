@@ -1,28 +1,28 @@
-// OMDB API Configuration
-const API_KEY = import.meta.env.VITE_OMDB_API_KEY || 'f3e38d5';
-const BASE_URL = import.meta.env.VITE_OMDB_BASE_URL || 'http://www.omdbapi.com/';
+//  uhi uhi OMDB API Configuration 
+const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
+const BASE_URL = import.meta.env.VITE_OMDB_BASE_URL;
 
-// Check if API key is available
-if (!API_KEY) {
-  console.warn("⚠️ Warning: Please set VITE_OMDB_API_KEY in .env file");
+// Check if API key is available or not 
+if (!API_KEY || !BASE_URL) {
+  console.error("❌ Error: API Configuration missing in .env file");
 }
 
-// Helper function to normalize image paths with validation
+// function for normalize image paths with validation
 const normalizeImagePath = (imagePath) => {
   if (!imagePath || imagePath === 'N/A') {
     return '/Images/placeholder.jpg';
   }
-  
+
   // If it's already a full URL (http/https), return as is
   if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
     return imagePath;
   }
-  
+
   // If it starts with /, it's already an absolute path
   if (imagePath.startsWith('/')) {
     return imagePath;
   }
-  
+
   // Otherwise, add the /Images/ prefix
   return `/Images/${imagePath}`;
 };
@@ -171,9 +171,9 @@ export const searchMovies = async (query, page = 1) => {
     console.log(`Searching OMDB API for: "${query}"`);
 
     // Validate API key before making request
-    if (!API_KEY || API_KEY === 'f3e38d5') {
-      console.warn('⚠️ Warning: Using default/invalid API key. Please set VITE_OMDB_API_KEY environment variable.');
-      console.warn('Search may return limited or no results.');
+    if (!API_KEY) {
+      console.warn('⚠️ Warning: API key not configured.');
+      return [];
     }
 
     // ALWAYS fetch from OMDB API for search queries - never use dummy data
@@ -189,7 +189,7 @@ export const searchMovies = async (query, page = 1) => {
 
     if (data.Response === 'True' && data.Search && data.Search.length > 0) {
       console.log(`Found ${data.Search.length} results for "${query}"`);
-      
+
       // Fetch details for each movie to get complete information
       const moviesWithDetails = await Promise.all(
         data.Search.slice(0, 10).map(async (movie) => {
@@ -198,7 +198,7 @@ export const searchMovies = async (query, page = 1) => {
               `${BASE_URL}?apikey=${API_KEY}&i=${movie.imdbID}&plot=short`
             );
             const detailData = await detailResponse.json();
-            
+
             if (detailData.Response === 'True') {
               return formatMovie(detailData);
             }
