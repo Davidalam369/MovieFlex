@@ -272,27 +272,11 @@ const Home = ({ theme, toggleTheme }) => {
                 <>
                   <div className="section-header-enhanced">
                     <div>
-                      <h2 className="section-main-title">Trending Movies</h2>
+                      <h2 className="section-main-title">Trending English Movies</h2>
                       <p className="section-subtitle">Upcoming and popular releases</p>
                     </div>
 
-                    <div className="filter-controls">
-                      <div className="filter-group">
-                        <label htmlFor="language-filter">Language:</label>
-                        <select
-                          id="language-filter"
-                          value={selectedLanguage}
-                          onChange={(e) => handleLanguageChange(e.target.value)}
-                          className="language-select"
-                        >
-                          {LANGUAGE_VALUES.map(lang => (
-                            <option key={lang} value={lang}>{lang}</option>
-                          ))}
-                        </select>
-                      </div>
-
-                      {/* Year filter removed */}
-                    </div>
+                  
                   </div>
 
                   <MovieSection
