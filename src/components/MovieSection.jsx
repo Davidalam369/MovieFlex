@@ -2,12 +2,12 @@ import { useState, useRef, useEffect } from 'react';
 import MovieCard from './MoveCard';
 import '../css/moviesection.css';
 
-const MovieSection = ({ 
-  title, 
-  movies, 
-  showLanguageFilter = false, 
+const MovieSection = ({
+  title,
+  movies,
+  showLanguageFilter = false,
   showYearFilter = false,
-  languages = [], 
+  languages = [],
   yearRanges = [],
   autoSlide = false,
   onLanguageFilter,
@@ -30,7 +30,7 @@ const MovieSection = ({
   // Auto-slide functionality
   useEffect(() => {
     if (!autoSlide || totalPages <= 1) return;
-    
+
     const interval = setInterval(() => {
       setCurrentPage(prev => {
         const nextPage = (prev + 1) % totalPages;
@@ -76,7 +76,7 @@ const MovieSection = ({
         left: e.deltaY * 2,
         behavior: 'smooth'
       });
-      
+
       // Update page based on scroll position
       setTimeout(() => {
         if (containerRef.current) {
@@ -108,12 +108,12 @@ const MovieSection = ({
     <section className="movie-section">
       <div className="section-header">
         <h2 className="section-title">{title}</h2>
-        
+
         <div className="filter-group">
           {showLanguageFilter && languages.length > 0 && (
             <div className="filter-container">
-              <select 
-                value={selectedLanguage} 
+              <select
+                value={selectedLanguage}
                 onChange={handleLanguageChange}
                 className="language-filter"
               >
@@ -142,7 +142,7 @@ const MovieSection = ({
       </div>
 
       <div className="section-content">
-        <button 
+        <button
           className={`nav-arrow left-arrow ${currentPage === 0 ? 'disabled' : ''}`}
           onClick={scrollLeft}
           disabled={currentPage === 0}
@@ -150,17 +150,17 @@ const MovieSection = ({
         >
           ‹
         </button>
-        
-        <div 
+
+        <div
           ref={containerRef}
           className="movies-container"
           onWheel={handleWheelScroll}
         >
           {filteredMovies.length > 0 ? (
             filteredMovies.map((movie, index) => (
-              <MovieCard 
-                key={`${movie.id || movie.imdbID}-${index}`} 
-                movie={movie} 
+              <MovieCard
+                key={`${movie.id || movie.imdbID}-${index}`}
+                movie={movie}
               />
             ))
           ) : (
@@ -169,8 +169,8 @@ const MovieSection = ({
             </div>
           )}
         </div>
-        
-        <button 
+
+        <button
           className={`nav-arrow right-arrow ${currentPage >= totalPages - 1 ? 'disabled' : ''}`}
           onClick={scrollRight}
           disabled={currentPage >= totalPages - 1}
@@ -179,11 +179,11 @@ const MovieSection = ({
           ›
         </button>
       </div>
-      
+
       {totalPages > 1 && (
         <div className="page-indicator">
           {Array.from({ length: totalPages }).map((_, index) => (
-            <div 
+            <div
               key={index}
               className={`page-dot ${index === currentPage ? 'active' : ''}`}
               onClick={() => {

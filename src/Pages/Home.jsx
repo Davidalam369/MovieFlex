@@ -9,7 +9,7 @@ import {
   LANGUAGES,
   LANGUAGE_VALUES
 } from '../services/api';
-import '../css/Home.css';
+import '../css/home.css';
 
 const Home = ({ theme, toggleTheme }) => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -306,29 +306,29 @@ const Home = ({ theme, toggleTheme }) => {
         )}
       </main>
 
-   <footer className="footer">
-  <div className="footer-film-strip"></div>
+      <footer className="footer">
+        <div className="footer-film-strip"></div>
 
-  <div className="footer-content">
-    <div className="footer-logo">
-      <h2>
-        Movie<span className="logo-highlight">Flix</span>
-      </h2>
-      <p className="footer-tagline">Your daily dose of cinema 🎬</p>
-    </div>
+        <div className="footer-content">
+          <div className="footer-logo">
+            <h2>
+              Movie<span className="logo-highlight">Flix</span>
+            </h2>
+            <p className="footer-tagline">Your daily dose of cinema 🎬</p>
+          </div>
 
-    <div className="footer-reel">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
+          <div className="footer-reel">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
 
-  <div className="footer-bottom">
-    <p>© 2026 MovieFlix. Built for movie lovers.</p>
-  </div>
-</footer>
+        <div className="footer-bottom">
+          <p>© 2026 MovieFlix. Built for movie lovers.</p>
+        </div>
+      </footer>
 
     </div>
   );

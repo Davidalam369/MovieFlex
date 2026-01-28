@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../css/Navbar.css";
+import "../css/navbar.css";
 
 const Navbar = ({ theme, toggleTheme }) => {
   const [isVisible, setIsVisible] = useState(true);
@@ -29,9 +29,8 @@ const Navbar = ({ theme, toggleTheme }) => {
 
   return (
     <nav
-      className={`navbar ${isVisible ? "visible" : "hidden"} ${
-        isScrolled ? "scrolled" : ""
-      }`}
+      className={`navbar ${isVisible ? "visible" : "hidden"} ${isScrolled ? "scrolled" : ""
+        }`}
     >
       {/* 🎞️ Film Strip Line */}
       <div className="navbar-film-strip"></div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Navbar from '../components/NavBar';
 import { getMovieById, favoritesManager } from '../services/api';
-import '../css/MovieDetails.css';
+import '../css/moviedetails.css';
 
 const MovieDetails = ({ theme, toggleTheme }) => {
     const { id } = useParams();
@@ -129,7 +129,7 @@ const MovieDetails = ({ theme, toggleTheme }) => {
                                 <span className="movie-year">
                                     {movie.Year}
                                 </span>
-                                
+
                                 <span className="meta-separator"></span>
                                 <div className="movie-rating-large">
                                     <svg
@@ -146,9 +146,8 @@ const MovieDetails = ({ theme, toggleTheme }) => {
 
                             <div className="action-buttons">
                                 <button
-                                    className={`fav-btn-large ${
-                                        isFavorite ? 'active' : ''
-                                    }`}
+                                    className={`fav-btn-large ${isFavorite ? 'active' : ''
+                                        }`}
                                     onClick={handleFavoriteClick}
                                 >
                                     {isFavorite ? 'Saved to Favorites' : 'Add to Favorites'}
@@ -164,7 +163,7 @@ const MovieDetails = ({ theme, toggleTheme }) => {
 
                         {/* ✅ MAIN DESCRIPTION (2 PARAGRAPHS) */}
                         <p className="plot-text">
-                            { movie.overview}
+                            {movie.overview}
                         </p>
 
                         {/* ✅ OPTIONAL SHORT OVERVIEW */}

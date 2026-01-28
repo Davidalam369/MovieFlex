@@ -4,7 +4,7 @@ import Home from './pages/Home'
 import Favorite from './pages/Favorites'
 import MovieDetails from './pages/MovieDetails'
 import Toast from './components/Toast'
-
+import "./css/app.css"
 function App() {
   const [theme, setTheme] = useState(() => {
     const savedTheme = localStorage.getItem('theme');

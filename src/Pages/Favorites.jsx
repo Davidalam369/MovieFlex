@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/NavBar';
 import MovieCard from '../components/MoveCard';
-import "../css/Favorites.css";
+import "../css/favorites.css";
 import { favoritesManager } from '../services/api';
 
 const Favorite = ({ theme, toggleTheme }) => {
