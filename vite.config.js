@@ -3,8 +3,7 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/",
+  base: process.env.NODE_ENV === 'production' ? './' : '/',
   plugins: [react()],
-
-  publicDir: 'public',
+  publicDir: 'public', // keep your public folder for images/assets
 })

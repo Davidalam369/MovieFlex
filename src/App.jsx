@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Home from './Pages/Home'
-import Favorite from './Pages/Favorites'
-import MovieDetails from './Pages/MovieDetails'
+import Home from './pages/Home'
+import Favorite from './pages/Favorites'
+import MovieDetails from './pages/MovieDetails'
 import Toast from './components/Toast'
-import './css/app.css';
+
 function App() {
   const [theme, setTheme] = useState(() => {
     const savedTheme = localStorage.getItem('theme');
