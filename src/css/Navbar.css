@@ -1,4 +1,6 @@
-/* Navbar.css - Navigation Bar Styles */
+/* ===============================
+   NAVBAR BASE
+================================ */
 .navbar {
   position: fixed;
   top: 0;
@@ -13,6 +15,7 @@
   padding: 18px 0;
 }
 
+/* Show / Hide on scroll */
 .navbar.visible {
   transform: translateY(0);
   opacity: 1;
@@ -23,6 +26,7 @@
   opacity: 0;
 }
 
+/* Scrolled effect */
 .navbar.scrolled {
   background: rgba(26, 26, 46, 0.95);
   box-shadow: 0 10px 30px var(--shadow-color);
@@ -33,6 +37,32 @@
   background: rgba(255, 255, 255, 0.95);
 }
 
+/* ===============================
+   🎞️ MOVIE FILM STRIP LINE
+================================ */
+.navbar-film-strip {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 6px;
+  width: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    #000000 0px,
+    #000000 16px,
+    transparent 16px,
+    transparent 26px
+  );
+  opacity:0.6;
+  pointer-events: none;
+}
+.app.light .navbar-film-strip {
+  opacity: 0.25;
+}
+
+/* ===============================
+   CONTAINER
+================================ */
 .navbar-container {
   max-width: 1400px;
   margin: 0 auto;
@@ -42,7 +72,9 @@
   align-items: center;
 }
 
-/* Logo */
+/* ===============================
+   LOGO
+================================ */
 .navbar-logo {
   cursor: pointer;
   transition: all 0.3s ease;
@@ -63,13 +95,15 @@
   display: inline-block;
 }
 
+/* Highlight */
 .logo-highlight {
   color: var(--accent-primary);
   position: relative;
 }
 
+/* Underline animation */
 .logo-highlight::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 0;
@@ -85,7 +119,9 @@
   transform: scaleX(1);
 }
 
-/* Navbar Controls */
+/* ===============================
+   NAVBAR CONTROLS
+================================ */
 .navbar-controls {
   display: flex;
   gap: 20px;
@@ -100,56 +136,9 @@
   margin: 0 5px;
 }
 
-/* Theme Toggle */
-.theme-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  background: var(--hover-bg);
-  border: 2px solid var(--border-color);
-  border-radius: 12px;
-  color: var(--text-primary);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.theme-toggle::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--accent-primary);
-  transform: scale(0);
-  border-radius: 50%;
-  transition: transform 0.4s ease;
-  z-index: 0;
-}
-
-.theme-toggle:hover::before {
-  transform: scale(1.5);
-}
-
-.theme-toggle svg {
-  position: relative;
-  z-index: 1;
-  transition: transform 0.4s ease;
-}
-
-.theme-toggle:hover svg {
-  transform: rotate(180deg) scale(1.1);
-}
-
-.theme-toggle:active {
-  transform: scale(0.95);
-}
-
-/* Navigation Links */
+/* ===============================
+   NAVIGATION LINKS
+================================ */
 .nav-link {
   display: flex;
   align-items: center;
@@ -171,12 +160,17 @@
   color: var(--text-primary);
 }
 
+/* Active state (Now Playing feel) */
 .nav-link.active {
-  background: var(--hover-bg);
+  background: rgba(229, 9, 20, 0.15);
   color: var(--accent-primary);
 }
 
+/* Icons */
 .nav-link svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
   transition: all 0.3s ease;
 }
 
@@ -185,7 +179,61 @@
   color: var(--accent-primary);
 }
 
-/* Mobile Menu Toggle (if needed in future) */
+/* ===============================
+   THEME TOGGLE
+================================ */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: var(--hover-bg);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glow effect */
+.theme-toggle::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--accent-primary);
+  transform: scale(0);
+  border-radius: 50%;
+  transition: transform 0.4s ease;
+  z-index: 0;
+}
+
+.theme-toggle:hover::before {
+  transform: scale(1.6);
+}
+
+.theme-toggle svg {
+  position: relative;
+  z-index: 1;
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+  transition: transform 0.4s ease;
+}
+
+.theme-toggle:hover svg {
+  transform: rotate(180deg) scale(1.1);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+/* ===============================
+   MOBILE MENU (FUTURE)
+================================ */
 .mobile-menu-toggle {
   display: none;
   flex-direction: column;
@@ -195,7 +243,6 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0;
 }
 
 .mobile-menu-toggle span {
@@ -206,7 +253,9 @@
   transition: all 0.3s ease;
 }
 
-/* Responsive Design */
+/* ===============================
+   RESPONSIVE DESIGN
+================================ */
 @media (max-width: 768px) {
   .navbar-container {
     padding: 0 15px;
@@ -230,16 +279,11 @@
     height: 45px;
     justify-content: center;
     background: var(--hover-bg);
-    border-radius: 12px;
   }
 
   .theme-toggle {
     width: 45px;
     height: 45px;
-  }
-
-  .nav-link svg {
-    margin: 0;
   }
 
   .divider {
@@ -260,7 +304,6 @@
   .theme-toggle {
     width: 40px;
     height: 40px;
-    padding: 0;
   }
 
   .mobile-menu-toggle {

@@ -306,14 +306,30 @@ const Home = ({ theme, toggleTheme }) => {
         )}
       </main>
 
-      <footer className="footer">
-        <div className="footer-content">
-          <div className="footer-logo">
-            <h2>Movie<span className="logo-highlight">Flex</span></h2>
-            <p>© 2026 MovieFlex. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+   <footer className="footer">
+  <div className="footer-film-strip"></div>
+
+  <div className="footer-content">
+    <div className="footer-logo">
+      <h2>
+        Movie<span className="logo-highlight">Flix</span>
+      </h2>
+      <p className="footer-tagline">Your daily dose of cinema 🎬</p>
+    </div>
+
+    <div className="footer-reel">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div className="footer-bottom">
+    <p>© 2026 MovieFlix. Built for movie lovers.</p>
+  </div>
+</footer>
+
     </div>
   );
 };
